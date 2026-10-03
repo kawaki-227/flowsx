@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#06111f"><title>Débloquer le téléchargement — FlowsX</title><link rel="stylesheet" href="/src/style.css"></head>
+<body><div class="shell"><header><a class="brand" href="/"><span class="logo">F<span>✦</span></span><span>Flows<span class="cyan">X</span><small>BY KAWAKI227</small></span></a><span class="pill">APK DOWNLOAD</span></header>
+<main><section class="hero"><div class="eyebrow">✦ SOUTIENS LE CRÉATEUR</div><h1>Presque prêt.<br><span class="gradient">Débloque ton APK.</span></h1><p>Ouvre mes profils TikTok et YouTube. Si tu apprécies mon travail, abonne-toi, puis reviens sur cette page pour continuer.</p></section>
+<section class="panel"><div class="steps"><span class="active">01 <b>Réseaux</b></span><span>02 <b>Attente</b></span><span>03 <b>Téléchargement</b></span></div>
+<div class="social-buttons"><a class="social" id="tiktok" href="https://www.tiktok.com/@kawaki227" target="_blank" rel="noopener noreferrer"><span>♪</span><span><b>TikTok</b><small>@kawaki227</small></span><strong>Ouvrir ↗</strong></a>
+<a class="social" id="youtube" href="https://youtube.com/@kawaki-227" target="_blank" rel="noopener noreferrer"><span>▶</span><span><b>YouTube</b><small>@kawaki-227</small></span><strong>Ouvrir ↗</strong></a></div>
+<p class="hint">Après avoir ouvert les deux profils, reviens ici. Le compte à rebours démarre après les deux clics.</p>
+<div class="progress"><div id="bar"></div></div><p id="status" role="status" aria-live="polite">Ouvre TikTok et YouTube pour continuer.</p>
+<button class="primary" id="unlock" disabled>🔒 Débloquer le téléchargement <span>→</span></button>
+<div id="downloadArea" class="downloadArea hidden"><p>✓ Étape terminée. Le lien de téléchargement est prêt.</p><a class="primary downloadLink" id="download" href="#" rel="noopener">↓ Télécharger l’APK</a><small id="missing">Le lien APK doit être fourni par la compilation avant de pouvoir télécharger.</small></div>
+<p class="disclaimer">Important : cette page enregistre uniquement l’ouverture des liens et l’attente. Elle ne peut pas vérifier automatiquement que tu es réellement abonné. Merci de soutenir <b>BY KAWAKI227</b> honnêtement.</p></section></main>
+<footer><span>Flows<span class="cyan">X</span> <small>BY KAWAKI227</small></span><span>Dev Num : <a href="tel:+22781289419">+22781289419</a></span></footer></div>
+<script>
+const params=new URLSearchParams(location.search);const apk=params.get('apk');let t=false,y=false,started=false,done=false;const $=id=>document.getElementById(id);
+function update(){if(t&&y&&!started){started=true;let left=10;$('status').textContent='Patiente '+left+' secondes…';const timer=setInterval(()=>{left--; $('status').textContent=left>0?'Téléchargement débloqué dans '+left+' seconde(s)…':'Prêt ! Tu peux continuer.';$('bar').style.width=((10-left)*10)+'%';if(left<=0){clearInterval(timer);done=true;$('unlock').disabled=false;$('unlock').textContent='✓ Afficher le téléchargement →';}},1000)}else if(!(t&&y))$('status').textContent='Ouvre TikTok et YouTube pour continuer.';}
+$('tiktok').addEventListener('click',()=>{t=true;update()});$('youtube').addEventListener('click',()=>{y=true;update()});
+$('unlock').addEventListener('click',()=>{if(!done)return;$('downloadArea').classList.remove('hidden');if(apk&&/^https:\\/\\//i.test(apk)){ $('download').href=apk;$('download').setAttribute('download','');$('missing').classList.add('hidden');}else{$('download').classList.add('disabled');$('download').removeAttribute('href');$('download').textContent='APK pas encore disponible';$('missing').textContent='Ajoute le lien HTTPS du fichier APK dans le paramètre ?apk= de cette page.';}});
+</script></body></html>
